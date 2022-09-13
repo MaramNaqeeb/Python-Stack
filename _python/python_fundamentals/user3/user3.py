@@ -43,16 +43,3 @@ Maram.display_user_balance()
 saeed.transfer(Maram,500)
 saeed.display_user_balance()
 Maram.display_user_balance()
-
-
-
-
-
-
-
-
-
-
-
-
-
