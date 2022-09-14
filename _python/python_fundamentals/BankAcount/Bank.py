@@ -28,4 +28,4 @@ account1 = BankAccount(int_rate=.01, balance=600)
 account1.deposit(200).deposit(30).deposit(80).withdraw(500).yield_interest().display_account_info()
 
 account2 = BankAccount(int_rate=.01, balance=1000)
-account1.deposit(100).deposit(300).deposit(70).withdraw(700).yield_interest().display_account_info()
+account2.deposit(100).deposit(300).deposit(70).withdraw(700).yield_interest().display_account_info()
