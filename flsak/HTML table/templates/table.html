@@ -6,21 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 
 <body>
     <table>
         <tr>
-            {% for key in my_user[0] %}
-            <th> {{ key }} </th>
-            {% endfor %}
+            <th>First name</th>
+            <th>last name</th>
+            <th>Full name</th>
         </tr>
             {%for user in my_user %}
         <tr>
             {% for value in user.values() %}
-      
             <td> {{ value }} </td>
             {% endfor %}
+            <td>{{user['first_name']}} {{user['last_name']}}</td>
+        </tr>
+        <tr>
+            
+            
         </tr>
             {% endfor %}
         </table>
