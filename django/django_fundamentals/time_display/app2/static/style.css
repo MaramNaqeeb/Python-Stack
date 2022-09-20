@@ -1,0 +1,30 @@
+h1{
+    border: 1px solid black;
+    width: 225px;
+    height:25px;
+    font-size:15px;
+    text-align: center;
+    margin: 10px 70px;
+}
+h2{
+    border: 1px solid black; 
+    width: 280px;
+    height:100px;
+    text-align: center;
+    display: flex;
+    display: block;
+    justify-content: center;
+    font-size: 40px;
+    margin: 10px 45px;
+}
+
+.container{
+    width:400px;
+    height:200px;
+    background-color: white;
+    display: flex;
+    display: inline-flex;
+    flex-direction: column;
+    margin:10% 35%;
+
+} 
