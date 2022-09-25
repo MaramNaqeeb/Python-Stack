@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the greate number game</h1>
+        <h2>I am thinking of a number between 1 and 100 </h2>
+        <h3>take a guess</h3>
+        <div id="status">
+            {% if request.session.digit == None %}
+            <div id="empty">{{request.session.statu}}</div>
+            {% endif %}
+
+            {% if request.session.status == "too high" or request.session.status == "too low" %}
+            <div class="wrong">{{request.session.status}}</div>
+            {% endif %}
+
+            {% if request.session.status == "correct" %}
+            <div class="right">{{request.session.status}}</div>
+            {% endif %}
+
+        </div>
+
+
+        <form action='/determine' method='post'>
+            {% csrf_token %}
+            <input type="number" id="number" name="number">
+            <input type="submit" id="submit" value="submit">
+        </form>
+    </div>
+
+</body>
+
+</html>
