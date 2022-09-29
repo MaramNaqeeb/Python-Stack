@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .book_container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin:7%;
+        
+    }
+    table, td, th {
+         border: 1px solid;
+    }
+
+    table{
+        width:20%;
+        border-collapse: collapse;
+            
+    }
+    </style>
+</head>
+<body>
+    <div class="book_container">
+    <form action="book_create" method="post">
+        {% csrf_token %}
+    <h1>Add a Book</h1>
+    <p>Title:<input type="text" name="title"></p>
+    <p>Description:<input type="text" name="description"></p>
+    <button>Add</button>
+    </form>
+    <table>
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Title</th>
+              <th scope="col">Action</th>
+            </tr>
+        </thead>
+        {% for book in all_the_books.all%}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title}}</td>
+                <td><a href="/book/{{book.id}}">view</a></td>
+            </tr>
+            {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

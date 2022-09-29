@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .author_container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            margin: 7%;
+           
+        }
+        table, td, th {
+         border: 1px solid;
+        }
+
+        table{
+        width:20%;
+        border-collapse: collapse;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="author_container">
+    <form action="author_create" method="post">
+        {% csrf_token %}
+    <h1>Add an Author</h1>
+    <p>First Name:<input type="text" name="first_name"></p>
+    <p>Last Name:<input type="text" name="last_name"></p>
+    <p>Notes:<input type="text" name="notes"></p>
+    <button>Add</button>
+    </form>
+    <table>
+    <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Action</th>
+        </tr>
+    </thead>
+    {% for author in all_the_authors%}
+        <tr>
+            <td>{{ author.id }}</td>
+            <td>{{ author.first_name}} {{ author.last_name}}</td>
+            <td><a href="/author/{{author.id}}">view</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+</body>
+</html>
