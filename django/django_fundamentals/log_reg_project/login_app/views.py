@@ -1,7 +1,6 @@
 from django.shortcuts import redirect,render
 from django.contrib import messages
 from .models import User
-import re
 import bcrypt
 
 
