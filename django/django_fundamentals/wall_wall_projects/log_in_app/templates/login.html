@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width:80%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        
+        }
+        .reg_container{
+            display: flex;
+            flex-direction: column;
+     
+
+        }
+        .reg_container>button{
+            margin:7%;
+        }
+
+        .log_container{
+            display: flex;
+            flex-direction: column;
+        }
+        .log_container>button{
+            margin:7%;
+        }
+
+    </style>
+</head>
+<body>
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    <div class="container">
+        <form action="/add_user/" method="post">
+            {% csrf_token%}
+        <div class="reg_container">
+            
+                <h1>Registration</h1>
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" id="first_name">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" id="last_name">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <label for="confirm_pw">Confirm PW</label>
+            <input type="password" name="conf_password" id="conf_password">
+            <button type="submit">Register</button>
+            </form>
+            </div>
+            
+            <form action="/log_user" method="post">
+                {% csrf_token%}
+            <div class="log_container">
+               
+                <h1>Login</h1>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <button type="submit">Login</button>
+
+            </form>
+            </div>
+    
+    </div>
+    
+
+</body>
+</html>

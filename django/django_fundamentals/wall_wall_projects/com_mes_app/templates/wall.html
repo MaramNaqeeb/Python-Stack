@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .success {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+      }
+      .logout {
+        margin: 0 30%;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/wall/message_create/" method="post">
+      {% csrf_token %}
+      <h2>CodingDojo Wall</h2>
+      <h3>welcome {{request.session.name}}</h3>
+      <a href="/clear">log off</a>
+      <label for="post_a_message">Post a message</label>
+      <textarea
+        name="post_a_message"
+        id="post_a_message"
+        cols="30"
+        rows="10"
+      ></textarea>
+      <button type="submit">Post a message</button>
+    </form>
+    {% for message in all_messages %}
+    <ul>
+      {{user.first_name}} {{user.last_name}} {{message.created_at}}
+
+      <li>{{message.message}}</li>
+      {% for comment in all_comments %}
+      {% if message.id == comment.message.id%}
+    <ul>
+      {{user.first_name}} {{user.last_name}} {{comment.created_at}}
+
+      <li>{{comment.comment}}</li>
+    </ul>
+    {% endif %}
+    {% endfor %}
+      <form action="/wall/comment_create/" method="post">
+        {% csrf_token %}
+        <input
+          type="hidden"
+          name="messageid_"
+          id="messageid"
+          value="{{message.id}}"
+        />
+
+        <label for="post_a_comment">Post a comment</label>
+        <textarea
+          name="post_a_comment"
+          id="post_a_comment"
+          cols="30"
+          rows="10"
+        ></textarea>
+        <button type="submit">Post a comment</button>
+      </form>
+    </ul>
+
+    
+   
+
+    {% endfor %} 
+    
+  </body>
+</html>
